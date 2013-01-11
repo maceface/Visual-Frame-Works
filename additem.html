@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+    <!-- Dana Mace
+        VFW Term 1301
+        Project 1
+        January 10, 2013
+        Add Item HTML Page -->
+
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="See the glass half full.  Keep track of what you're grateful for on a daily basis.  Make the world a better place, one thought at a time." />
+        <meta name="keywords" content="Gratitude, Journal, Grateful, Happy, Mobile" />
+        <meta name="robots" content="noindex, nofollow" />
+        <meta name="viewport" content="user-scalable=no, width=device-width" />
+        <title>An Attitude of Gratitude Journal</title>
+        <link href="css/additem.css" rel="stylesheet" type="text/css"/>
+    </head>
+    
+    <body>
+
+    <!-- HEADER -->
+
+        <header>
+            <h1>An Attitude of Gratitude Journal</h1>
+        </header>
+
+    <!-- FORM STARTS HERE -->
+
+    <form action="#" method="post">
+              
+
+    <!-- Date of gratitude -->
+
+        <fieldset>
+            <legend>Date & Time</legend>
+                <ul>
+                    <li><label for="date">Date:<label><input type="date" value="mmddyyyy" id="date" /></li>
+                    <li><label for="time">Time:</label><input type="text" id="time" /></li>
+                </ul>
+        </fieldset>
+
+    <!-- What's Your "Attitude of Gratitude" -->
+
+        <fieldset>
+            <legend>My attitude of gratitude</legend>
+                <ul>
+                <li><label for="what">What I'm grateful for:</label><br>
+                <textarea rows="5" cols="50" id="restaurants"></textarea></li>
+                </ul>
+        </fieldset>
+
+    <!-- Why? -->
+
+        <fieldset>
+            <legend>Is there a story behind this?</legend>
+                <ul>
+                <li><label for="why">I have an attitude of gratitude because:</label><br>
+                <textarea rows="15" cols="50" id="restaurants"></textarea></li>
+                </ul>
+        </fieldset>
+        
+    <!-- CHOOSE THE COLOR THAT YOU LIKE BEST TODAY -->
+    
+        <fieldset>
+            <legend>What color do you like best today?</legend>
+                
+    
+            <form action="">
+                <select name="colors">
+                    <option value="yellow" selected>Yellow</option>
+                    <option value="pink">Pink</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                    <option value="red">Red</option>
+                </select>
+            </form>
+
+        </fieldset>
+
+    <!-- CHOOSE WHAT MAKES YOU HAPPY -->
+    
+        <fieldset>
+            <legend>Which items make you happy?</legend>
+     
+            <form action="">
+                <input type="checkbox" name="flowers" value="Flowers">Flowers<br>
+                <input type="checkbox" name="sunshine" value="Sunshine">Sunshine<br>
+                <input type="checkbox" name="stars" value="Stars">Stars<br>
+                <input type="checkbox" name="moon" value="Moon">Moon<br>
+                <input type="checkbox" name="grass" value="Grass">Grass<br>
+                <input type="checkbox" name="birds" value="Birds">Birds
+            </form>
+         </fieldset>
+
+<!-- RATE YOUR ATTITUDE OF GRATITUDE -->
+
+        <fieldset>
+            <legend>Rate your Attitude of Gratitude:</legend>
+                <ul>
+                    <li><label for="rating">On a scale from 1 to 10, rate your gratitude level:  </label><input type="range" min="1" max="10" name="scale" id="scale"></li>
+                </ul>
+            </fieldset><br>
+
+<!-- Submit Button and Hidden Field -->
+
+        <input type="submit" value="Save Gratitude" />
+        <input type="hidden" value="GratitudeID" />
+        </form><br>
+
+<!-- FOOTER -->
+
+    <footer>
+        <a href="#">Clear Stored Data</a> <a href="#">Display Data</a>
+    </footer>
+
+    </body>
+</html>
+
