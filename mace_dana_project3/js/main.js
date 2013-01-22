@@ -9,16 +9,9 @@ window.addEventListener("DOMContentLoaded", function(){
     
     //getElementByID function
     function $(x){
-        var theEl = document.getElementById(x)
-        return theEl
+        var theEl = document.getElementById(x);
+        return theEl;
     };
-    
-    //Function to see local storage data
-    function showGrat (){
-        toggleControls("on");
-        if(localStorage.length === 0) {
-            alert("There are no Gratitudes in your library.");
-        }
         
             //Function - erase grats in local
     function clearLibrary(){
@@ -76,16 +69,23 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     };
     
+        //Get Checkbox Value
+    function getCheckboxValue(){
+        if($('items').checked){
+            checkedValue = $('items').value;
+        } else {
+            checkedValue = "No"
+           }
+        return checkedValue
+    };
     
-            //Get Color Value
-        function getFavValue(){
-            if($('fav').checked){
-                favValue = $('fav').value;
-            } else {
-                favValue = "No"
-            }
-            return favValue
-        };
+        //Function to see local storage data
+    function showGrat (){
+        toggleControls("on");
+        if(localStorage.length === 0) {
+            alert("There are no Gratitudes in your library.");
+        }
+    };    
     
     //Store Grat in Local Storage
     function storeGrat(){
