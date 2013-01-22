@@ -7,19 +7,15 @@ January 10, 2013
 Add Item HTML Page -->
 
 <html>
-
     <head>
-        <a href="#">Display Gratitude Library</a>
-        
         <meta charset="utf-8" />
         <meta name="description" content="See the glass half full.  Keep track of what you're grateful for on a daily basis.  Make the world a better place, one thought at a time." />
         <meta name="keywords" content="Gratitude, Journal, Grateful, Happy, Mobile" />
         <meta name="robots" content="noindex, nofollow" />
         <meta name="viewport" content="user-scalable=no, width=device-width" />
         <title>An Attitude of Gratitude Journal</title>
-        <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
     </head>
-    
     <body>
 
 <!-- HEADER -->
@@ -27,49 +23,44 @@ Add Item HTML Page -->
         <header>
             <h1>An Attitude of Gratitude Journal</h1>
         </header>
+        <nav>
+            <a href="#" id="clearGrat">Clear Gratitude Library</a>
+            <a href="#" id="displayGrat">Display Gratitude Library</a>
+            <a href="activity2example.html" id="addNewGrat" style="display:none;">Add New Gratitude</a>
+        </nav>
 
 <!-- FORM STARTS HERE -->
 
-    <form action="#" method="post">
+        <form action="#" method="post" id=gratitudeForm>
               
-
 <!-- Date of gratitude -->
 
-        <fieldset>
-            <legend>Date & Time</legend>
-                <ul>
-                    <li><label for="date">Date:<label><input type="date" value="mmddyyyy" id="date" /></li>
-                    <li><label for="time">Time:</label><input type="text" id="time" /></li>
-                </ul>
-        </fieldset>
-
+            <fieldset id=gratitudeFieldset>
+                <legend>Date & Time</legend>
+                    <ul>
+                        <li><label for="date">Date:<label><input type="date" value="mmddyyyy" id="date" /></li>
+                        <li><label for="time">Time:</label><input type="text" id="time" /></li>
+                    </ul>
+    
 <!-- What's Your "Attitude of Gratitude" -->
 
-        <fieldset>
-            <legend>My attitude of gratitude</legend>
-                <ul>
-                    <li><label for="what">What I'm grateful for:</label><br>
-                    <textarea rows="5" cols="50" id="gratitude"></textarea></li>
-                </ul>
-        </fieldset>
+                <legend>My attitude of gratitude</legend>
+                    <ul>
+                        <li><label for="what">What I'm grateful for:</label><br>
+                        <textarea rows="5" cols="50" id="gratitude"></textarea></li>
+                    </ul>
 
 <!-- Why? -->
 
-        <fieldset>
-            <legend>Is there a story behind this?</legend>
-                <ul>
-                    <li><label for="why">I have an attitude of gratitude because:</label><br>
-                    <textarea rows="15" cols="50" id="gratitude"></textarea></li>
-                </ul>
-        </fieldset>
-        
+                <legend>Is there a story behind this?</legend>
+                    <ul>
+                        <li><label for="why">I have an attitude of gratitude because:</label><br>
+                        <textarea rows="15" cols="50" id="gratitude"></textarea></li>
+                    </ul>
+
 <!-- CHOOSE THE COLOR THAT YOU LIKE BEST TODAY -->
-    
-        <fieldset>
-            <legend>What color do you like best today?</legend>
-                
-    
-            <form action="">
+
+                <legend>What color do you like best today?</legend>
                 <select name="colors">
                     <option value="yellow" selected>Yellow</option>
                     <option value="pink">Pink</option>
@@ -77,53 +68,27 @@ Add Item HTML Page -->
                     <option value="green">Green</option>
                     <option value="red">Red</option>
                 </select>
-            </form>
-
-        </fieldset>
 
 <!-- CHOOSE WHAT MAKES YOU HAPPY -->
     
-        <fieldset>
-            <legend>Which items make you happy?</legend>
-     
-            <form action="">
-                <input type="checkbox" name="flowers" value="Flowers">Flowers<br>
-                <input type="checkbox" name="sunshine" value="Sunshine">Sunshine<br>
-                <input type="checkbox" name="stars" value="Stars">Stars<br>
-                <input type="checkbox" name="moon" value="Moon">Moon<br>
-                <input type="checkbox" name="grass" value="Grass">Grass<br>
-                <input type="checkbox" name="birds" value="Birds">Birds
-            </form>
-         </fieldset>
-
+                <legend>Which items make you happy?</legend>
+                    <input type="checkbox" name="items" value="Flowers">Flowers<br>
+                    <input type="checkbox" name="items" value="Sunshine">Sunshine<br>
+                    <input type="checkbox" name="items" value="Stars">Stars<br>
+                    <input type="checkbox" name="items" value="Moon">Moon<br>
+                    <input type="checkbox" name="items" value="Grass">Grass<br>
+                    <input type="checkbox" name="items" value="Birds">Birds
+         
 <!-- RATE YOUR ATTITUDE OF GRATITUDE -->
 
-        <fieldset>
-            <legend>Rate your Attitude of Gratitude:</legend>
-                <ul>
-                    <li><label for="rating">Rate your gratitude level:<br>
-                    </label><input type="range" min="1" max="10" name="scale" id="scale"></li>
-                </ul>
+                <legend>Rate your Attitude of Gratitude:</legend>
+                    <ul>
+                        <li><label for="rating">Rate your gratitude level:<br>
+                        </label><input type="range" min="1" max="10" name="scale" id="scale"></li>
+                    </ul>
             </fieldset><br>
-
-<!-- Submit Button and Hidden Field -->
-    <h2>
-        <form method="link" action="view.html">
-            <input type="submit" value="Save & View Gratitude">
+            <input type="submit" value="Save Gratitude" id="saveGrat" /><br />
         </form>
-    </h2>
-        
-
-<!-- Clear Data and Show Data links -->
-<!-- FOOTER -->
-
-    <footer>
-        <a href="#">Clear Gratitude Library</a>
-        <script src="main.js" type="text/javascript"></script>
-    </footer>
-    
-    
-
+        <script src="js/main.js" type="text/javascript"></script>
     </body>
 </html>
-
