@@ -8,30 +8,32 @@ main.js page*/
 window.addEventListener("DOMContentLoaded", function(){
     
     //getElementByID function
-    function $(x){
-        var theEl = document.getElementById(x);
-        return theEl;
+    function whatever(x){
+        var beHappy = document.getElementById(x);
+        return beHappy;
     }
     
     function doGroup(){
         var doTag = document.getElementsByTagName("form");
-            selectLi = $('colors');
-            makeSelect = document.createElement('select');
-            makeSelect.setAttribute("id", "colorsGroups");
-        for(var i=0, j=colorsGroups.length; i<j; i++) {
+            pickAList = whatever('colors');
+            justPickSomething = document.createElement('select');
+            justPickSomething.setAttribute("id", "happyColorGroups");
+        for(var i=0, j=happyColorGroups.length; i<j; i++) {
             var doOpt = document.createElement('option');
-            var doText = colorsGroups[i];
+            var doText = happyColorGroups[i];
             doOpt.setAttribute("value", doText);
             doOpt.innerHTML = doText;
-            makeSelect.appendChild(doOpt);
+            justPickSomething.appendChild(doOpt);
         }
-        selectLi.appendChild(makeSelect);
+        pickAList.appendChild(justPickSomething);
+        
     }
     
     //Get Checkbox Value
     function getCheckboxValue(){
-        if($('items').checked){
-            checkedValue = $('items').value;
+        var happyItem = document.forms[0,1,2,3,4,5].model
+        if(whatever('happyItem').checked){
+            whatGotChecked = whatever('happyItem').value;
         }
     }
     
@@ -39,17 +41,17 @@ window.addEventListener("DOMContentLoaded", function(){
     function toggleControls(n){
         switch(n){
             case "on":
-                $('gratitudeForm').style.display = "none";
-                $('clearGrat').style.display = "inline";
-                $('displayGrat').style.display = "none";
-                $('addNewGrat').style.display = "inline";
+                whatever('gratitudeForm').style.display = "none";
+                whatever('clearGrat').style.display = "inline";
+                whatever('displayGrat').style.display = "none";
+                whatever('addNewGrat').style.display = "inline";
                 break;
             case "off":
-                $('gratitudeForm').style.display = "block";
-                $('clearGratForm').style.display = "inline";
-                $('displayGrat').style.display = "inline";
-                $('addNewGrat').style.display = "none";
-                $('choices').style.display = "none";
+                whatever('gratitudeForm').style.display = "block";
+                whatever('clearGratForm').style.display = "inline";
+                whatever('displayGrat').style.display = "inline";
+                whatever('addNewGrat').style.display = "none";
+                whatever('choices').style.display = "none";
                 break;
             default:
                 return false;
@@ -57,29 +59,29 @@ window.addEventListener("DOMContentLoaded", function(){
     }
      
     //Store Grat in Local Storage
-    function storeData(){
-        var gratId = Math.floor(Math.random()*100000001);
+    function storeLocally(){
+        var gratId = Math.floor(Math.random()*123400001);
         getCheckboxValue();
         //Store form field values in an object
         //Objects props - array with form labels and input values
         var choice = {};
-            choice.date = ["Date:", $('date').value];
-            choice.time = ["Time:", $('time').value];
+            choice.date = ["Date:", whatever('date').value];
+            choice.time = ["Time:", whatever('time').value];
             
-            choice.what = ["What I'm grateful for:", $('gratitude').value];
+            choice.what = ["What I'm grateful for:", whatever('gratitude').value];
             
-            choice.why = ["I have an attitude of gratitude because:", $('gratStory').value];
+            choice.why = ["I have an attitude of gratitude because:", whatever('gratStory').value];
             
-            choice.color = ["What color do you like best today?:",  $('colorsGroups').value];
+            choice.color = ["What color do you like best today?:",  whatever('happyColorGroups').value];
             
-            choice.items = ["Which items make you happy?", checkedValue];
+            choice.items = ["Which items make you happy?", whatGotChecked];
     //Save data to local storage: conv obj to a string
         localStorage.setItem(gratId, JSON.stringify(choice));
         alert("Gratitude Added!");
     }
         
     //Function to see local storage data
-    function showGrat (){
+    function showMeWutchaGot (){
         toggleControls("on");
         if(localStorage.length === 0) {
             alert("There are no Gratitudes in your library.");
@@ -91,7 +93,7 @@ window.addEventListener("DOMContentLoaded", function(){
         var makeLi = document.createElement('ul');
         makeConversion.appendChild(makeLi);
         document.body.appendChild(makeConversion);
-        $('choices').style.display = "display";
+        whatever('choices').style.display = "display";
         for(var i=0, len=localStorage.length; i<len;i++) {
             var doList = document.createElement('li');
             var linksLi = document.createElement('li');
@@ -113,7 +115,7 @@ window.addEventListener("DOMContentLoaded", function(){
     }    
     
     //Function - erase grats in local
-    function clearLibrary(){
+    function getOffMyDevice(){
         if(localStorage.length === 0){
             alert("There are no gratitudes to delete.");
         }else{
@@ -125,16 +127,16 @@ window.addEventListener("DOMContentLoaded", function(){
     }
     
     //Variable defaults
-    var colorsGroups = ["--Colors--", "yellow", "pink", "blue", "green", "red"],
-        colors
+    var happyColorGroups = ["--Colors--", "yellow", "pink", "blue", "green", "red"],
+        whatGotChecked
     ;
     doGroup();
        
     //Set link and submit click events
-    var displayGrat = $("displayGrat");
-    displayGrat.addEventListener("click", showGrat);
-    var clearGrat = $("clearGrat");
-    clearGrat.addEventListener("click", clearLibrary);
-    var saveGrat = $("saveGrat");
-    saveGrat.addEventListener("click", storeData);
+    var displayGrat = whatever("displayGrat");
+    displayGrat.addEventListener("click", showMeWutchaGot);
+    var clearGrat = whatever("clearGrat");
+    clearGrat.addEventListener("click", getOffMyDevice);
+    var saveGrat = whatever("saveGrat");
+    saveGrat.addEventListener("click", storeLocally);
 });
