@@ -26,12 +26,12 @@ Add Item HTML Page -->
         <nav>
             <a href="#" id="clearGrat">Clear Gratitude Library</a>
             <a href="#" id="displayGrat">Display Gratitude Library</a>
-            <a href="activity2example.html" id="addNewGrat" style="display:none;">Add New Gratitude</a>
+            <a href="index.html" id="addNewGrat" style="display:none;">Add New Gratitude</a>
         </nav>
 
 <!-- FORM STARTS HERE -->
 
-        <form action="#" method="post" id=gratitudeForm>
+        <form action="#" method="post" id="gratitudeForm">
               
 <!-- Date of gratitude -->
 
@@ -55,30 +55,27 @@ Add Item HTML Page -->
                 <legend>Is there a story behind this?</legend>
                     <ul>
                         <li><label for="why">I have an attitude of gratitude because:</label><br>
-                        <textarea rows="15" cols="50" id="gratitude"></textarea></li>
+                        <textarea rows="15" cols="50" id="gratStory"></textarea></li>
                     </ul>
 
 <!-- CHOOSE THE COLOR THAT YOU LIKE BEST TODAY -->
 
                 <legend>What color do you like best today?</legend>
-                <select name="colors">
-                    <option value="yellow" selected>Yellow</option>
-                    <option value="pink">Pink</option>
-                    <option value="blue">Blue</option>
-                    <option value="green">Green</option>
-                    <option value="red">Red</option>
-                </select>
+                    <ul>
+                        <li id="colors"><label name="Colors" for="Colors"></label></li>
+                    </ul>
 
 <!-- CHOOSE WHAT MAKES YOU HAPPY -->
     
                 <legend>Which items make you happy?</legend>
-                    <input type="checkbox" name="items" value="Flowers">Flowers<br>
-                    <input type="checkbox" name="items" value="Sunshine">Sunshine<br>
-                    <input type="checkbox" name="items" value="Stars">Stars<br>
-                    <input type="checkbox" name="items" value="Moon">Moon<br>
-                    <input type="checkbox" name="items" value="Grass">Grass<br>
-                    <input type="checkbox" name="items" value="Birds">Birds
-         
+                    <ul>
+                        <li><input type="checkbox" name="items" value="Flowers" id="flowers"><label for="flowers">Flowers</label></li>
+                        <li><input type="checkbox" name="items" value="Sunshine" id="sunshine"><label for="sunshine">Sunshine</label></li>
+                        <li><input type="checkbox" name="items" value="Stars" id="stars"><label for="stars">Stars</label></li>
+                        <li><input type="checkbox" name="items" value="Moon" id="moon"><label for="moon">Moon</label></li>
+                        <li><input type="checkbox" name="items" value="Grass" id="grass"><label for="grass">Grass</label></li>
+                        <li><input type="checkbox" name="items" value="Birds" id="birds"><label for="birds">Birds</label></li>
+                    </ul>
 <!-- RATE YOUR ATTITUDE OF GRATITUDE -->
 
                 <legend>Rate your Attitude of Gratitude:</legend>
@@ -87,7 +84,7 @@ Add Item HTML Page -->
                         </label><input type="range" min="1" max="10" name="scale" id="scale"></li>
                     </ul>
             </fieldset><br>
-            <input type="submit" value="Save Gratitude" id="saveGrat" /><br />
+            <input type="submit" value="saveGratitude" id="saveGrat" /><br />
         </form>
         <script src="js/main.js" type="text/javascript"></script>
     </body>
