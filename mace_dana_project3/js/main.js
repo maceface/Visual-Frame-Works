@@ -16,48 +16,29 @@ window.addEventListener("DOMContentLoaded", function(){
     function doGroup(){
         var doTag = document.getElementsByTagName("form");
             pickAList = whatever('colors');
-            justPickSomething = document.createElement('select');
-            justPickSomething.setAttribute("id", "happyColorGroups");
+            makeSelect = document.createElement('select');
+            makeSelect.setAttribute("id", "happyColorGroups");
         for(var i=0, j=happyColorGroups.length; i<j; i++) {
             var doOpt = document.createElement('option');
             var doText = happyColorGroups[i];
             doOpt.setAttribute("value", doText);
             doOpt.innerHTML = doText;
-            justPickSomething.appendChild(doOpt);
+            makeSelect.appendChild(doOpt);
         }
-        pickAList.appendChild(justPickSomething);
+        pickAList.appendChild(makeSelect);
         
     }
     
     //Get Checkbox Value
     function getCheckboxValue(){
-        if(whatever('flowers').checked){
-            flowersCheck = whatever('flowers').value;
-        }else{
-            flowersCheck = "No"
-        };
-        if(whatever('sunshine').checked){
-            sunshineCheck = whatever('sunshine').vaulue;
-        }else{
-            sunshineCheck = "No"
-        };
-        if(whatever('stars').checked){
-            sunshineCheck = whatever('stars').vaulue;
-        }else{
-            sunshineCheck = "No"
-            if(whatever('moon').checked){
-            sunshineCheck = whatever('moon').vaulue;
-        }else{
-            sunshineCheck = "No"
-        if(whatever('grass').checked){
-            sunshineCheck = whatever('grass').vaulue;
-        }else{
-            sunshineCheck = "No"
-        if(whatever('birds').checked){
-            sunshineCheck = whatever('birds').vaulue;
-        }else{
-            sunshineCheck = "No"
-        };
+        var myCheckboxes = whatever("gratitudeForm").items;
+        savedChecks = [ ];
+        for(i=0; i<myCheckboxes.length; i++){
+            if(myCheckboxes[i].checked){
+                whatGotChecked = myCheckboxes[i].value;
+                savedChecks.push(whatGotChecked);
+            }
+        }
     }
     
         //Display Grat data on other page
@@ -97,13 +78,7 @@ window.addEventListener("DOMContentLoaded", function(){
             
             choice.color = ["What color do you like best today?:",  whatever('happyColorGroups').value];
             
-            choice.flowersCheck = ["Flowers", flowersCheck];
-            choice.sunshineCheck = ["Sunshine", sunshineCheck];
-            choice.starsCheck = ["Stars", starsCheck];
-            choice.moonCheck = ["Moon", moonCheck];
-            choice.grassCheck = ["Grass", grassCheck];
-            choice.birdsCheck = ["Birds", birdscheck];
-            
+            choice.items = ["Which items make you happy?", savedChecks];
     //Save data to local storage: conv obj to a string
         localStorage.setItem(gratId, JSON.stringify(choice));
         alert("Gratitude Added!");
@@ -118,11 +93,11 @@ window.addEventListener("DOMContentLoaded", function(){
         
         //From local to browser
         var makeConversion = document.createElement('div');
-        makeConversion.setAttribute("id", "choice");
+        makeConversion.setAttribute("id", "choices");
         var makeLi = document.createElement('ul');
         makeConversion.appendChild(makeLi);
         document.body.appendChild(makeConversion);
-        whatever('choice').style.display = "block";
+        whatever('choices').style.display = "display";
         for(var i=0, len=localStorage.length; i<len;i++) {
             var doList = document.createElement('li');
             var linksLi = document.createElement('li');
@@ -139,10 +114,8 @@ window.addEventListener("DOMContentLoaded", function(){
                 makeAnotherLi.appendChild(makeSubli);
                 var optSubText = obj[n][0] + " " + obj[n][1];
                 makeSubli.innerHTML = optSubText;
-                makeAnotherLi.appendChild(linksLi);
             }
         }
-        doGroup(localStorage.key(i), linksLi);
     }    
     
     //Function - erase grats in local
@@ -159,7 +132,8 @@ window.addEventListener("DOMContentLoaded", function(){
     
     //Variable defaults
     var happyColorGroups = ["--Colors--", "yellow", "pink", "blue", "green", "red"],
-        whatGotChecked
+        whatGotChecked,
+        savedChecks
     ;
     doGroup();
        
