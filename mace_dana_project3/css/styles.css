@@ -2,8 +2,9 @@
 Dana Mace
 VFW 1301 */
 
+
 body {
-    background-image: url('img/texture.png');
+    background-image: url("../img/paper.png")
 }
 
 h1 {

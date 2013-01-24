@@ -52,7 +52,7 @@ window.addEventListener("DOMContentLoaded", function(){
                 break;
             case "off":
                 whatever('gratitudeForm').style.display = "block";
-                whatever('clearGratForm').style.display = "inline";
+                whatever('clearGrat').style.display = "inline";
                 whatever('displayGrat').style.display = "inline";
                 whatever('addNewGrat').style.display = "none";
                 whatever('choices').style.display = "none";
@@ -64,7 +64,7 @@ window.addEventListener("DOMContentLoaded", function(){
      
     //Store Grat in Local Storage
     function storeLocally(){
-        var gratId = Math.floor(Math.random()*123400001);
+        var gratId = Math.floor(Math.random()*123456789);
         getCheckboxValue();
         //Store form field values in an object
         //Objects props - array with form labels and input values
@@ -79,6 +79,9 @@ window.addEventListener("DOMContentLoaded", function(){
             choice.color = ["What color do you like best today?:",  whatever('happyColorGroups').value];
             
             choice.items = ["Which items make you happy?", savedChecks];
+            
+            choice.scale = ["Rate your Attitude of Gratitude:", whatever('scaleIt').value];
+            
     //Save data to local storage: conv obj to a string
         localStorage.setItem(gratId, JSON.stringify(choice));
         alert("Gratitude Added!");
@@ -107,16 +110,71 @@ window.addEventListener("DOMContentLoaded", function(){
             
             //Local storage back to object
             var obj = JSON.parse(value);
-            var makeAnotherLi = document.createElement('ul');
-            doList.appendChild(makeAnotherLi);
+            var makeSubList = document.createElement('ul');
+            doList.appendChild(makeSubList);
             for(var n in obj) {
                 var makeSubli = document.createElement('li');
-                makeAnotherLi.appendChild(makeSubli);
+                makeSubList.appendChild(makeSubli);
                 var optSubText = obj[n][0] + " " + obj[n][1];
                 makeSubli.innerHTML = optSubText;
+                makeSubList.appendChild(linksLi);
             }
+            makeItemLinks(localStorage.key(i), linksLi); //Create our edit and delete buttons/link for each item in local storage
         }
-    }    
+    }
+    
+    //Make Item Links
+    //Creat the edit and delete links for each stored item when displayed
+    function makeItemLinks(key, linksLi){
+        //add edit single item link
+        var editLink = document.createElement('a');
+        editLink.href = "#";
+        editLink.key = key;
+        var editText = "Edit Journal";
+        editLink.addEventListener("click", editItem);
+        editLink.innerHTML = editText;
+        linksLi.appendChild(editLink);
+        
+        //add line break
+        var breakTag = document.createElement('br');
+        linksLi.appendChild(breakTag);
+        
+        //add delete single item link
+        var deleteLink = document.createElement('a');
+        deleteLink.href = "#";
+        deleteLink.key = key;
+        var deleteText = "Delete Gratitude";
+        //deleteLink.addEventListener("click", deleteItem);
+        deleteLink.innerHTML = deleteText;
+        linksLi.appendChild(deleteLink);
+    }
+    
+    function editItem(){
+        //Grab the data from our item from Local Storage.
+        var value = localStorage.getItem(this.key);
+        var choice = JSON.parse(value);
+        
+        //show the form
+        toggleControls("off");
+        
+        //populate the form fields with the current local storage values
+        whatever('date').value = choice.date[1];
+        whatever('time').value = choice.time[1];
+        whatever('gratitude').value = choice.what[1];
+        whatever('gratStory').value = choice.why[1];
+        whatever('happyColorGroups').value = choice.color[1];
+        var myCheckboxes = whatever("gratitudeForm").items;
+        savedChecks = [ ];
+        for(i=0; i<myCheckboxes.length; i++){
+            if(myCheckboxes[i].checked){
+                whatGotChecked = myCheckboxes[i].value;
+                savedChecks.push(whatGotChecked);
+                myCheckboxes[i].setAttribute("checked", "checked");
+            }
+        whatever('scaleIt').value = choice.scale[1];
+        }
+       
+    }
     
     //Function - erase grats in local
     function getOffMyDevice(){
