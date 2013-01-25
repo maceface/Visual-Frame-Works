@@ -13,7 +13,7 @@ h1 {
     padding: 0.25em;
     text-align: center;
     text-shadow: 2px 2px 2px #98b5db;
-    font-family: "Lucida Sans", arial;
+    font-family: helvetica;
     width: "device-width";
     font-size: 30px;
 }
@@ -24,17 +24,19 @@ fieldset {
 
 legend {
     color: #000000;
-    font-family: arial;
-    font-size: 13px;
+    font-family: helvetica;
+    font-size: 15px;
     font-weight: bold;
     text-align: left;
     text-transform: uppercase;
 }
 
 label {
-    font-family: arial;
-    font-size: 12px;
+    font-family: helvetica;
+    font-size: 13px;
     font-weight: 100;
+    background-color: white;
+    text-justify: distribute;
 }
 
 input {
@@ -48,7 +50,7 @@ textarea {
 
 p {
     text-align: center;
-    font-family: arial;
+    font-family: helvetica;
     font-size: 13px;
 }
 
@@ -69,13 +71,13 @@ ul {
 
 li {
     padding-bottom: 1px;
-    font-family: arial;
+    font-family: helvetica;
     font-size: 12px;
     list-style-type: square;
 }
 
 a {
-    font-family: arial;
+    font-family: helvetica;
 }
 
 h2 {

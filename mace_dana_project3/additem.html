@@ -37,52 +37,54 @@ Add Item HTML Page -->
 
             <fieldset id=gratitudeFieldset>
                 <legend>Date & Time</legend>
-                    <ul>
-                        <li><label for="date">Date:<label><input type="date" value="mmddyyyy" id="date" /></li>
-                        <li><label for="time">Time:</label><input type="text" id="time" /></li>
-                    </ul>
+                <span>* fields are required.</span>
+                <ul id="errors"></ul>
+                <ul id="journal">
+                    <li><label for="date">* Date:<label><input type="date" value="mmddyyyy" id="date" /></li>
+                    <li><label for="time">Time:</label><input type="text" id="time" /></li>
+                </ul>
     
 <!-- What's Your "Attitude of Gratitude" -->
 
                 <legend>My attitude of gratitude</legend>
-                    <ul>
-                        <li><label for="what">What I'm grateful for:</label><br>
-                        <textarea rows="5" cols="50" id="gratitude"></textarea></li>
-                    </ul>
+                <ul>
+                    <li><label for="what">* What I'm grateful for:</label><br>
+                    <textarea rows="5" cols="50" id="gratitude"></textarea></li>
+                </ul>
 
 <!-- Why? -->
 
                 <legend>Is there a story behind this?</legend>
-                    <ul>
-                        <li><label for="why">I have an attitude of gratitude because:</label><br>
-                        <textarea rows="15" cols="50" id="gratStory"></textarea></li>
-                    </ul>
+                <ul>
+                    <li><label for="why">I have an attitude of gratitude because:</label><br>
+                    <textarea rows="15" cols="50" id="gratStory"></textarea></li>
+                </ul>
 
 <!-- CHOOSE THE COLOR THAT YOU LIKE BEST TODAY -->
 
                 <legend>What color do you like best today?</legend>
-                    <ul>
-                        <li id="colors"><label name="Colors" for="Colors"></label></li>
-                    </ul>
+                <ul>
+                    <li id="colors"><label name="Colors" for="Colors"></label></li>
+                </ul>
 
 <!-- CHOOSE WHAT MAKES YOU HAPPY -->
     
                 <legend>Which items make you happy?</legend>
-                    <ul>
-                        <li><input type="checkbox" name="items" value="Flowers" id="flowers"><label for="flowers">Flowers</label></li>
-                        <li><input type="checkbox" name="items" value="Sunshine" id="sunshine"><label for="sunshine">Sunshine</label></li>
-                        <li><input type="checkbox" name="items" value="Stars" id="stars"><label for="stars">Stars</label></li>
-                        <li><input type="checkbox" name="items" value="Moon" id="moon"><label for="moon">Moon</label></li>
-                        <li><input type="checkbox" name="items" value="Grass" id="grass"><label for="grass">Grass</label></li>
-                        <li><input type="checkbox" name="items" value="Birds" id="birds"><label for="birds">Birds</label></li>
-                    </ul>
+                <ul>
+                    <li><input type="checkbox" name="items" value="Flowers" id="flowers"><label for="flowers">Flowers</label></li>
+                    <li><input type="checkbox" name="items" value="Sunshine" id="sunshine"><label for="sunshine">Sunshine</label></li>
+                    <li><input type="checkbox" name="items" value="Stars" id="stars"><label for="stars">Stars</label></li>
+                    <li><input type="checkbox" name="items" value="Moon" id="moon"><label for="moon">Moon</label></li>
+                    <li><input type="checkbox" name="items" value="Grass" id="grass"><label for="grass">Grass</label></li>
+                    <li><input type="checkbox" name="items" value="Birds" id="birds"><label for="birds">Birds</label></li>
+                </ul>
 <!-- RATE YOUR ATTITUDE OF GRATITUDE -->
 
                 <legend>Rate your Attitude of Gratitude:</legend>
-                    <ul>
-                        <li><label for="rating">Rate your gratitude level:<br>
-                        </label><input type="range" min="1" max="10" name="scale" id="scaleIt"></li>
-                    </ul>
+                <ul>
+                    <li><label for="rating">Rate your gratitude level:<br>
+                    </label><input type="range" min="1" max="10" name="scale" id="scaleIt"></li>
+                </ul>
             </fieldset><br>
             <input type="submit" value="saveGratitude" id="saveGrat" /><br />
         </form>
