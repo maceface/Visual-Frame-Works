@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", function(){
     }
     
         //Display Grat data on other page
-    function toggleControls(n){
+    function controlThisToggle(n){
         switch(n){
             case "on":
                 whatever('gratitudeForm').style.display = "none";
@@ -70,7 +70,7 @@ window.addEventListener("DOMContentLoaded", function(){
         }else{
             //otherwise, set the id to the existing key we're editing so that it will save over the data
             //The key is the same key that's been passed along from the editSubmit event handler
-            //To the validate function and then passed here into the storeLocally function.
+            //To the makeARequirement function and then passed here into the storeLocally function.
             id = key;
         }
         getCheckboxValue();
@@ -90,80 +90,80 @@ window.addEventListener("DOMContentLoaded", function(){
             
             choice.scale = ["Rate your Attitude of Gratitude:", whatever('scaleIt').value];
             
-    //Save data to local storage: conv obj to a string
+    //Save data to local storage: conv returnsAccepted to a string
         localStorage.setItem(id, JSON.stringify(choice));
         alert("Gratitude Added!");
     }
         
     //Function to see local storage data
     function showMeWutchaGot (){
-        toggleControls("on");
+        controlThisToggle("on");
         if(localStorage.length === 0) {
             alert("There are no Gratitudes in your library.");
         }
         
         //From local to browser
-        var makeConversion = document.createElement('div');
-        makeConversion.setAttribute("id", "choices");
-        var makeLi = document.createElement('ul');
-        makeConversion.appendChild(makeLi);
-        document.body.appendChild(makeConversion);
+        var hereToThere = document.createElement('div');
+        hereToThere.setAttribute("id", "choices");
+        var recordYourHeart = document.createElement('ul');
+        hereToThere.appendChild(recordYourHeart);
+        document.body.appendChild(hereToThere);
         whatever('choices').style.display = "display";
         for(var i=0, len=localStorage.length; i<len;i++) {
             var doList = document.createElement('li');
             var linksLi = document.createElement('li');
-            makeLi.appendChild(doList);
+            recordYourHeart.appendChild(doList);
             var key = localStorage.key(i);
             var value = localStorage.getItem(key);
             
             //Local storage back to object
-            var obj = JSON.parse(value);
+            var returnsAccepted = JSON.parse(value);
             var makeSubList = document.createElement('ul');
             doList.appendChild(makeSubList);
-            for(var n in obj) {
+            for(var n in returnsAccepted) {
                 var makeSubli = document.createElement('li');
                 makeSubList.appendChild(makeSubli);
-                var optSubText = obj[n][0] + " " + obj[n][1];
+                var optSubText = returnsAccepted[n][0] + " " + returnsAccepted[n][1];
                 makeSubli.innerHTML = optSubText;
                 makeSubList.appendChild(linksLi);
             }
-            makeItemLinks(localStorage.key(i), linksLi); //Create our edit and delete buttons/link for each item in local storage
+            doDeleteEditLinks(localStorage.key(i), linksLi); //Create our edit and delete buttons/link for each item in local storage
         }
     }
     
     //Make Item Links
     //Creat the edit and delete links for each stored item when displayed
-    function makeItemLinks(key, linksLi){
+    function doDeleteEditLinks(key, linksLi){
         //add edit single item link
-        var editLink = document.createElement('a');
-        editLink.href = "#";
-        editLink.key = key;
+        var fixerLink = document.createElement('a');
+        fixerLink.href = "#";
+        fixerLink.key = key;
         var editText = "Edit Journal";
-        editLink.addEventListener("click", editItem);
-        editLink.innerHTML = editText;
-        linksLi.appendChild(editLink);
+        fixerLink.addEventListener("click", dontLikeItChangeIt);
+        fixerLink.innerHTML = editText;
+        linksLi.appendChild(fixerLink);
         
         //add line break
-        var breakTag = document.createElement('br');
-        linksLi.appendChild(breakTag);
+        var lineBreakTag = document.createElement('br');
+        linksLi.appendChild(lineBreakTag);
         
         //add delete single item link
-        var deleteLink = document.createElement('a');
-        deleteLink.href = "#";
-        deleteLink.key = key;
+        var dumpItLink = document.createElement('a');
+        dumpItLink.href = "#";
+        dumpItLink.key = key;
         var deleteText = "Delete Gratitude";
-        deleteLink.addEventListener("click", deleteItem);
-        deleteLink.innerHTML = deleteText;
-        linksLi.appendChild(deleteLink);
+        dumpItLink.addEventListener("click", byeByeItem);
+        dumpItLink.innerHTML = deleteText;
+        linksLi.appendChild(dumpItLink);
     }
     
-    function editItem(){
+    function dontLikeItChangeIt(){
         //Grab the data from our item from Local Storage.
         var value = localStorage.getItem(this.key);
         var choice = JSON.parse(value);
         
         //show the form
-        toggleControls("off");
+        controlThisToggle("off");
         
         //populate the form fields with the current local storage values
         whatever('date').value = choice.date[1];
@@ -189,12 +189,12 @@ window.addEventListener("DOMContentLoaded", function(){
         var editSubmit = whatever('saveGrat');
         //Save the key value established in this funtion as a property of the editSubmit event
         //so we can use that value when we save the data we edited
-        editSubmit.addEventListener("click", validate);
+        editSubmit.addEventListener("click", makeARequirement);
         editSubmit.key = this.key;
        
     }
     
-    function deleteItem(){
+    function byeByeItem(){
         var ask = confirm("Are you sure you want to delete this Gratitude");
         if(ask){
             localStorage.removeItem(this.key);
@@ -217,38 +217,38 @@ window.addEventListener("DOMContentLoaded", function(){
         }
     }
     
-    function validate(e){
+    function makeARequirement(e){
         //Define the elements we want to check
         var getDate = whatever('date');
         var getGratitude = whatever('gratitude');
         
         //Reset the Error messages
-        errMsg.innerHTML = "";
+        somethingIsSeriouslyWrongMsg.innerHTML = "";
         getDate.style.border = "1px solid black";
         getGratitude.style.border = "1px solid black";
         
         //Get error messages
-        var messageAry = [];
+        var findFormErrors = [];
         //Date Validation
         if(getDate.value===""){
             var dateError = "Please enter a Date.";
             getDate.style.border = "1px solid red";
-            messageAry.push(dateError);
+            findFormErrors.push(dateError);
         }
         
         //Gratitude Validation
         if(getGratitude.value===""){
             var gratError = "Please enter a Gratitude.";
             getGratitude.style.border = "1px solid red";
-            messageAry.push(gratError);
+            findFormErrors.push(gratError);
         }
         
         //If there were errors, display them on the screen
-        if(messageAry.length >= 1){
-            for(var i=0, j=messageAry.length; i<j; i++){
+        if(findFormErrors.length >= 1){
+            for(var i=0, j=findFormErrors.length; i<j; i++){
                 var scribble = document.createElement('li');
-                scribble.innerHTML = messageAry[i];
-                errMsg.appendChild(scribble);
+                scribble.innerHTML = findFormErrors[i];
+                somethingIsSeriouslyWrongMsg.appendChild(scribble);
             }
             e.preventDefault();
             return false;
@@ -264,7 +264,7 @@ window.addEventListener("DOMContentLoaded", function(){
     var happyColorGroups = ["--Colors--", "yellow", "pink", "blue", "green", "red"],
         whatGotChecked,
         savedChecks,
-        errMsg = whatever('errors');
+        somethingIsSeriouslyWrongMsg = whatever('errors');
     ;
     doGroup();
        
@@ -274,5 +274,5 @@ window.addEventListener("DOMContentLoaded", function(){
     var clearGrat = whatever("clearGrat");
     clearGrat.addEventListener("click", getOffMyDevice);
     var saveGrat = whatever("saveGrat");
-    saveGrat.addEventListener("click", validate);
+    saveGrat.addEventListener("click", makeARequirement);
 });
