@@ -1,7 +1,7 @@
 /* Dana Mace
 VFW TERM 1301
-Project 2
-January 16, 2013
+Project 3
+January 24, 2013
 main.js page*/
 
 // Main Function Ensures DOM content is loaded and ready
@@ -91,7 +91,7 @@ window.addEventListener("DOMContentLoaded", function(){
             choice.scale = ["Rate your Attitude of Gratitude:", whatever('scaleIt').value];
             
     //Save data to local storage: conv obj to a string
-        localStorage.setItem(gratId, JSON.stringify(choice));
+        localStorage.setItem(id, JSON.stringify(choice));
         alert("Gratitude Added!");
     }
         
@@ -152,7 +152,7 @@ window.addEventListener("DOMContentLoaded", function(){
         deleteLink.href = "#";
         deleteLink.key = key;
         var deleteText = "Delete Gratitude";
-        //deleteLink.addEventListener("click", deleteItem);
+        deleteLink.addEventListener("click", deleteItem);
         deleteLink.innerHTML = deleteText;
         linksLi.appendChild(deleteLink);
     }
@@ -171,7 +171,7 @@ window.addEventListener("DOMContentLoaded", function(){
         whatever('gratitude').value = choice.what[1];
         whatever('gratStory').value = choice.why[1];
         whatever('happyColorGroups').value = choice.color[1];
-        var myCheckboxes = whatever("gratitudeForm").items;
+        /*var myCheckboxes = whatever("gratitudeForm").items;
         savedChecks = [ ];
         for(i=0; i<myCheckboxes.length; i++){
             if(myCheckboxes[i].checked){
@@ -180,10 +180,10 @@ window.addEventListener("DOMContentLoaded", function(){
                 myCheckboxes[i].setAttribute("checked", "checked");
             }
         }
-        whatever('scaleIt').value = choice.scale[1];
+        whatever('scaleIt').value = choice.scale[1];*/
         
         //Remove the initial listener from the input "save contact" button.
-        save.removeEventListener("click", storeLocally);
+        saveGrat.removeEventListener("click", storeLocally);
         //Change Submit Button Value to say Edit Button
         whatever('saveGrat').value = "Edit Contact"
         var editSubmit = whatever('saveGrat');
@@ -246,9 +246,9 @@ window.addEventListener("DOMContentLoaded", function(){
         //If there were errors, display them on the screen
         if(messageAry.length >= 1){
             for(var i=0, j=messageAry.length; i<j; i++){
-                var txt = document.createElement('li');
-                txt.innerHTML = messageAry[i];
-                errMsg.appendChild(txt);
+                var scribble = document.createElement('li');
+                scribble.innerHTML = messageAry[i];
+                errMsg.appendChild(scribble);
             }
             e.preventDefault();
             return false;
@@ -263,7 +263,7 @@ window.addEventListener("DOMContentLoaded", function(){
     //Variable defaults
     var happyColorGroups = ["--Colors--", "yellow", "pink", "blue", "green", "red"],
         whatGotChecked,
-        savedChecks
+        savedChecks,
         errMsg = whatever('errors');
     ;
     doGroup();

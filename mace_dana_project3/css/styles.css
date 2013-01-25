@@ -4,7 +4,7 @@ VFW 1301 */
 
 
 body {
-    background-image: url("../img/paper.png")
+    background-image: url("../img/paper.png");
 }
 
 h1 {
@@ -87,3 +87,18 @@ h2 {
 footer {
     padding-top: 30px;
 }
+
+/*  TYPE SELECTORS
+    #timeLine{background: green;padding: 10px;font-weight: bold;}
+    .errormsg{background: #ff0000; color #fff;padding: 10px;font-weight; bold;}
+    Note: you can only use an id once on the HTML doc
+    
+    DESCENDENT SELECTORS
+    form span{background: #000; color: #fff;font-size: 8px;}
+    form ul{margin: 0px;padding: 0;list-style: none;}
+    form fieldset ul * input{width: 200px; padding: 5px;margin: 5px;}
+    * means everything (all)
+    to target just an id, you could say... form fieldset #idWhateverItIs input...
+    
+    CHILD SELECTORS
+    body > p {...}*/
