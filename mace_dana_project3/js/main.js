@@ -99,7 +99,8 @@ window.addEventListener("DOMContentLoaded", function(){
     function showMeWutchaGot (){
         controlThisToggle("on");
         if(localStorage.length === 0) {
-            alert("There are no Gratitudes in your library.");
+            alert("There are no Gratitudes in your library, so default gratitudes will be added.");
+            autoFillGrat ();
         }
         
         //From local to browser
@@ -120,6 +121,7 @@ window.addEventListener("DOMContentLoaded", function(){
             var returnsAccepted = JSON.parse(value);
             var makeSubList = document.createElement('ul');
             doList.appendChild(makeSubList);
+            getImage(returnsAccepted.color[1], makeSubList);
             for(var n in returnsAccepted) {
                 var makeSubli = document.createElement('li');
                 makeSubList.appendChild(makeSubli);
@@ -130,6 +132,26 @@ window.addEventListener("DOMContentLoaded", function(){
             doDeleteEditLinks(localStorage.key(i), linksLi); //Create our edit and delete buttons/link for each item in local storage
         }
     }
+    
+    //Get the image for the right category
+    function getImage(likedColor, makeSubList){
+        var images = document.createElement('li');
+        makeSubList.appendChild(images);
+        var colorIcon = document.createElement('img');
+        var whichOne = colorIcon.setAttribute("src", "img/"+ likedColor + ".png");
+        images.appendChild(colorIcon);
+    }
+    
+    //Auto Populate Local Storage
+    function autoFillGrat(){
+        //The actual JSON OBJECT data required for this to work is coming from our JSON.js file which is loaded from our HTML page
+        //Store the JSON OBJECT into Local Storage.
+        for(var n in json){
+            var id = Math.floor(Math.random()*123456789);
+            localStorage.setItem(id, JSON.stringify(json[n]));
+        }
+    }
+    
     
     //Make Item Links
     //Creat the edit and delete links for each stored item when displayed
@@ -261,7 +283,7 @@ window.addEventListener("DOMContentLoaded", function(){
     }
     
     //Variable defaults
-    var happyColorGroups = ["--Colors--", "yellow", "pink", "blue", "green", "red"],
+    var happyColorGroups = ["--Colors--", "Yellow", "Pink", "Blue", "Green", "Red", "Orange"],
         whatGotChecked,
         savedChecks,
         somethingIsSeriouslyWrongMsg = whatever('errors');
