@@ -50,23 +50,25 @@ textarea {
 
 p {
     text-align: center;
-    font-family: helvetica;
+    font-family: arial;
     font-size: 13px;
+}
+
+.cf:before,
+.cf:after{
+    content:"";
+    display:table;
+}
+
+.cf:after{
+    clear:both;
+}
+.cf{
+    zoom:1;
 }
 
 nav {
     text-align: center;
-}
-
-ol {
-    border-bottom: .5px dotted #8a8a8a;
-    margin-left: -80px;
-}
-
-ul {
-    color: #03224c;
-    padding-bottom: 13px;
-    padding-top: 13px;	
 }
 
 li {
@@ -76,8 +78,26 @@ li {
     list-style-type: square;
 }
 
+ul, li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li a {
+    display: block;
+    width: 150px;
+    height: 35px;
+    list-style:none;
+    float: left;
+    line-height: 2em;
+    padding: 4 1em;
+}
+
 a {
     font-family: helvetica;
+    font-size: 14px;
+    color: blue;
 }
 
 h2 {
